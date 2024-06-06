@@ -307,14 +307,14 @@ h2.tasks_content_heading {
   padding: 2%;
   outline: none;
   border-radius: 15px;
-  border: solid 1px;
+  border: solid 1px #B872FF;
   cursor: pointer;
   transition: all 1s;
 }
 
 .btn_task_add:hover,
 .acao_btn_task:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .invisible {
