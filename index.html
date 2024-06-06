@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TimeTrekker</title>
+    <title>Fokus- TL</title>
     <link
       rel="shortcut icon"
       href="assets/img/favicon-32x32.png"
@@ -21,7 +21,7 @@
   <body>
     <header class="header_titulo">
       <img src="assets/img/logo.png" alt="Logo Time Trekker" srcset="" />
-      Time Trekker
+      Fokus - Task List
     </header>
 
     <main>
@@ -90,9 +90,62 @@
           </button>
         </div>
       </section>
+
+      <section class="tak_container">
+        <div class="task_content_info">
+          <p class="task_content_label">#Em andamento:</p>
+          <p class="task_content_description">Nome da tarefa</p>
+        </div>
+
+        <hr />
+
+        <div class="task_content_list_form">
+          <h2 class="tasks_content_heading">Lista de tarefas:</h2>
+
+          <button class="tasks_content_heading_btn">
+            <i class="fa-solid fa-bars" style="color: #e3e3e3"></i>
+          </button>
+        </div>
+
+        <ul class="dropdown_list"></ul>
+
+        <form action="" class="form_task_add invisible">
+          <label for="">Adicionando tarefa</label>
+          <textarea
+            name=""
+            id=""
+            rows="4"
+            class="textarea_add_task"
+            placeholder="No que você está trabalhando?"
+          ></textarea>
+          <div class="form_buttons_list">
+            <button class="acao_btn_task btn_deletar">
+              <i class="fa-solid fa-trash" style="color: #e3e3e3"></i>
+              Deletar
+            </button>
+
+            <button class="acao_btn_task btn_cancelar">
+              <i class="fa-solid fa-xmark" style="color: #e3e3e3"></i>
+              Cancelar
+            </button>
+            <button type="submit" class="acao_btn_task">
+              <i class="fa-solid fa-floppy-disk" style="color: #e3e3e3"></i>
+              Salvar
+            </button>
+          </div>
+        </form>
+
+        <button class="btn_task_add">
+          <i class="fa-solid fa-plus" style="color: #e3e3e3"></i>
+          Adicionar nova tarefa
+        </button>
+      </section>
+
     </main>
+
     <footer>
       <p>Desenvolvido por Elany Souza - Projeto Alura</p>
     </footer>
+
   </body>
 </html>
