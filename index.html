@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-interface="foco">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeTrekker</title>
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/da0f9bd54a.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="assets/js/app.js" defer></script>
+    <script src="assets/js/script-crud.js" defer></script>
+  </head>
+  <body>
+    <header class="header_titulo">
+      <img src="assets/img/logo.png" alt="Logo Time Trekker" srcset="" />
+      Time Trekker
+    </header>
+
+    <main>
+      <section class="apresentacao">
+        <div class="apresentacao_titulo">
+          <h1 class="apresentacao_titulo_texto">
+            Maximize sua produtividade,
+            <strong class="apresentacao_titulo_destaque"
+              >concentre-se no essencial.</strong
+            >
+          </h1>
+        </div>
+        <div class="apresentacao_imagem">
+          <img
+            class="apresentacao_imagem_imagem"
+            src="assets/img/foco.png"
+            alt="Imagem ilustrativa de foco/descanso-curto/descanso-longo"
+            srcset=""
+          />
+        </div>
+      </section>
+
+      <section class="controle">
+        <div class="controle_conteudo">
+          <ul class="controle_conteudo_itens">
+            <li>
+              <button
+                class="conteudo_controle_button active"
+                data-conteudo="foco"
+              >
+                Foco
+              </button>
+            </li>
+            <li>
+              <button
+                class="conteudo_controle_button"
+                data-conteudo="descanso-curto"
+              >
+                Descanso curto
+              </button>
+            </li>
+            <li>
+              <button
+                class="conteudo_controle_button"
+                data-conteudo="descanso-longo"
+              >
+                Descanso longo
+              </button>
+            </li>
+          </ul>
+          <div class="controle_conteudo_musica">
+            <div class="controle_conteudo_timer"></div>
+            <input type="checkbox" name="" id="alterar-musica" />
+            <label for="alterar-musica" class="botaoStart">Música</label>
+          </div>
+          <button class="controle_conteudo_button botaoStart" id="botaoStart">
+            <i class="fa-solid fa-play" style="color: #ffffff"></i>
+            <span class="controle_conteudo_button_texto">Começar</span>
+          </button>
+          <button
+            class="controle_conteudo_button botaoStart hidden"
+            id="botaoReiniciar"
+          >
+            <i class="fa-solid fa-play" style="color: #ffffff"></i>
+            <span class="controle_conteudo_button_texto">Reiniciar</span>
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>Desenvolvido por Elany Souza - Projeto Alura</p>
+    </footer>
+  </body>
+</html>
