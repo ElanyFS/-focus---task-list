@@ -73,7 +73,13 @@ function alterarConteudo(valorInterface) {
 
 const tempoContagem = () => {
   if (tempoSegundos <= 0) {
-    
+    const htmlContextoFoco = html.getAnimations('data-contexto') == 'foco';
+
+    if(htmlContextoFoco){
+      const evento = new CustomEvent('eventoTempoFinalizado');
+      document.dispatchEvent(evento);
+    }
+
     zerar();
     musicaTimeFinished.play();
     reiniciarCronometro();
