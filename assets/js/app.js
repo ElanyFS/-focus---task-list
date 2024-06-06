@@ -73,6 +73,7 @@ function alterarConteudo(valorInterface) {
 
 const tempoContagem = () => {
   if (tempoSegundos <= 0) {
+    
     zerar();
     musicaTimeFinished.play();
     reiniciarCronometro();

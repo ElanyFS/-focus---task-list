@@ -232,16 +232,21 @@ h2.tasks_content_heading {
 
 .task_list_li {
   list-style: none;
-  border: solid rgb(255, 255, 255) 1px;
+  border: solid 1px;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  background: #ffffff80;
+}
+
+.task_list_li_active.task_list_li {
+  border: solid 2px #fff;
 }
 
 .task_list_li_paragrafo {
-  color: #fff;
+  color: #000;
   display: flex;
   gap: 5px;
   padding: 5px;
@@ -251,7 +256,7 @@ h2.tasks_content_heading {
 
 .task_list_li_btn {
   background-color: transparent;
-  border: #fff solid 1px;
+  border: #000 solid 1px;
   border-radius: 50%;
   padding: 1px;
 }
@@ -307,7 +312,7 @@ h2.tasks_content_heading {
   padding: 2%;
   outline: none;
   border-radius: 15px;
-  border: solid 1px #B872FF;
+  border: solid 1px #b872ff;
   cursor: pointer;
   transition: all 1s;
 }
@@ -325,6 +330,7 @@ i {
   font-size: 1rem;
   cursor: pointer;
   padding: 2px;
+  color: #000;
 }
 /* .dropdown_content_task {
   position: relative;

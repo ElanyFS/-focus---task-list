@@ -4,10 +4,16 @@ const formAddTask = document.querySelector(".form_task_add"); // formulario de a
 const textareaTask = document.querySelector(".textarea_add_task"); // tarefa informada para addconst ulElemento = document.querySelector('.dropdown_list'); // elemento ul
 const ulElemento = document.querySelector(".dropdown_list"); //elemento ul
 
+const paragrafoDescricaoTask = document.querySelector(
+  ".task_content_description"
+); // descricao tarefa em andamento
+
 const btnCancelar = document.querySelector("#btn_cancelar"); // botao cancelar
 const btnDeletar = document.querySelector("#btn_deletar"); // botao deletar
 
 const taskList = JSON.parse(localStorage.getItem("tarefas")) || []; // Array de tarefas
+
+let taskSelecionada = null;
 
 // Atualizar tarefas
 function atualizarTask() {
@@ -19,8 +25,6 @@ function criarElementoLi(task) {
   const li = document.createElement("li");
   li.classList.add("task_list_li");
 
-  
-
   const paragrafo = document.createElement("p");
   paragrafo.classList.add("task_list_li_paragrafo");
 
@@ -30,14 +34,32 @@ function criarElementoLi(task) {
   botao.classList.add("task_list_li_btn");
 
   botao.onclick = () => {
-    debugger;
+    // debugger;
     const novaDescricao = prompt("Qual o novo nome da tarefa?");
-    console.log("tarefa", novaDescricao);
+    // console.log("tarefa", novaDescricao);
     if (novaDescricao) {
       paragrafo.textContent = novaDescricao;
       task.descricao = novaDescricao;
       atualizarTask();
     }
+  };
+
+  li.onclick = () => {
+    document.querySelectorAll(".task_list_li_active").forEach((elemento) => {
+      elemento.classList.remove("task_list_li_active");
+    });
+
+    if (taskSelecionada == task) {
+      paragrafoDescricaoTask.textContent = "";
+      taskSelecionada = null;
+      return;
+    }
+
+    taskSelecionada = task;
+
+    li.classList.add("task_list_li_active");
+
+    paragrafoDescricaoTask.textContent = task.descricao;
   };
 
   const icon = document.createElement("i");
