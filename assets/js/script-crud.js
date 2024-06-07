@@ -4,6 +4,11 @@ const formAddTask = document.querySelector(".form_task_add"); // formulario de a
 const textareaTask = document.querySelector(".textarea_add_task"); // tarefa informada para addconst ulElemento = document.querySelector('.dropdown_list'); // elemento ul
 const ulElemento = document.querySelector(".dropdown_list"); //elemento ul
 
+const btnDeletarTaskConcluidas = document.querySelector(
+  "#btn_deletar_concluidas_tasks"
+);
+const btnDeletarTodasTask = document.querySelector("#btn_deletar_todas_tasks");
+
 const paragrafoDescricaoTask = document.querySelector(
   ".task_content_description"
 ); // descricao tarefa em andamento
@@ -11,7 +16,7 @@ const paragrafoDescricaoTask = document.querySelector(
 const btnCancelar = document.querySelector("#btn_cancelar"); // botao cancelar
 const btnDeletar = document.querySelector("#btn_deletar"); // botao deletar
 
-const taskList = JSON.parse(localStorage.getItem("tarefas")) || []; // Array de tarefas
+let taskList = JSON.parse(localStorage.getItem("tarefas")) || []; // Array de tarefas
 
 let taskSelecionada = null;
 let liTaskSelecionado = null;
@@ -29,6 +34,11 @@ function criarElementoLi(task) {
   const paragrafo = document.createElement("p");
   paragrafo.classList.add("task_list_li_paragrafo");
 
+  const iconCheck = document.createElement("i");
+  iconCheck.innerHTML = `
+  <i class="fa-solid fa-check"></i>
+  `;
+
   paragrafo.textContent = task.descricao;
 
   const botao = document.createElement("button");
@@ -45,30 +55,38 @@ function criarElementoLi(task) {
     }
   };
 
-  li.onclick = () => {
-    document.querySelectorAll(".task_list_li_active").forEach((elemento) => {
-      elemento.classList.remove("task_list_li_active");
-    });
+  if (task.complete) {
+    li.classList.add("task_list_li_complete");
+    botao.setAttribute("disable", "disable");
+  } else {
+    li.onclick = () => {
+      document.querySelectorAll(".task_list_li_active").forEach((elemento) => {
+        elemento.classList.remove("task_list_li_active");
+      });
 
-    if (taskSelecionada == task) {
-      paragrafoDescricaoTask.textContent = "";
-      taskSelecionada = null;
-      liTaskSelecionado = null;
-      return;
-    }
+      if (taskSelecionada == task) {
+        paragrafoDescricaoTask.textContent = "";
+        taskSelecionada = null;
+        liTaskSelecionado = null;
+        return;
+      }
 
-    taskSelecionada = task;
-    liTaskSelecionado = li 
+      taskSelecionada = task;
+      liTaskSelecionado = li;
 
-    li.classList.add("task_list_li_active");
+      li.classList.add("task_list_li_active");
 
-    paragrafoDescricaoTask.textContent = task.descricao;
-  };
+      paragrafoDescricaoTask.textContent = task.descricao;
+    };
+  }
 
   const icon = document.createElement("i");
-
+  icon.innerHTML = `
+  <i class="fa-solid fa-pen"></i>
+  `;
   botao.append(icon);
 
+  paragrafo.append(iconCheck);
   li.append(paragrafo);
   li.append(botao);
 
@@ -110,13 +128,29 @@ btnDeletar.onclick = () => {
   formAddTask.classList.add("invisible");
 };
 
-document.addEventListener('eventoTempoFinalizado', () => {
-  if(taskSelecionada && liTaskSelecionado){
-    liTaskSelecionado.classList.remove('task_list_li_active');
-    liTaskSelecionado.classList.add('task_list_li_complete');
-    liTaskSelecionado.querySelector('button').setAttribute('disable', 'disable');
-    paragrafoDescricaoTask.textContent = '';
+document.addEventListener("eventoTempoFinalizado", () => {
+  if (taskSelecionada && liTaskSelecionado) {
+    liTaskSelecionado.classList.remove("task_list_li_active");
+    liTaskSelecionado.classList.add("task_list_li_complete");
+    liTaskSelecionado
+      .querySelector("button")
+      .setAttribute("disable", "disable");
+    paragrafoDescricaoTask.textContent = "";
     taskSelecionada.complete = true;
     atualizarTask();
   }
 });
+
+const removerTarefas = (concluidas) => {
+  const seletor = concluidas ? ".task_list_li_complete" : ".task_list_li";
+  document.querySelectorAll(seletor).forEach((elemento) => {
+    elemento.remove();
+  });
+
+  taskList = concluidas ? taskList.filter((tarefa) => !tarefa.complete) : [];
+  atualizarTask();
+};
+
+btnDeletarTaskConcluidas.onclick = () => removerTarefas(true);
+
+btnDeletarTodasTask.onclick = () => removerTarefas();

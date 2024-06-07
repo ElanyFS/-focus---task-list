@@ -212,6 +212,7 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 3% 0;
+  position: relative;
 }
 
 h2.tasks_content_heading {
@@ -220,7 +221,12 @@ h2.tasks_content_heading {
 
 .tasks_content_heading_btn {
   background-color: transparent;
-  border: none;
+  border: 1px solid #b872ff;
+  border-radius: 50%;
+}
+
+.tasks_content_heading_btn > i {
+  padding: 8px;
   font-size: 1.4rem;
 }
 
@@ -228,6 +234,41 @@ h2.tasks_content_heading {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.menu_suspenso {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  top: 80%;
+  min-width: 15rem;
+  background: #1b293b;
+  border-radius: 8px;
+  border: 2px solid #144480;
+}
+
+.menu_suspenso:hover,
+.tasks_content_heading_btn:hover ~ .menu_suspenso {
+  display: block;
+}
+
+.menu_suspenso_li {
+  list-style: none;
+  padding: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.menu_suspenso_li:hover {
+  background-color: #0f725c;
+}
+
+.btn_menu_suspenso {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
 }
 
 .task_list_li {
@@ -336,45 +377,6 @@ i {
   padding: 2px;
   color: #000;
 }
-/* .dropdown_content_task {
-  position: relative;
-} */
-
-/* .task_header_ul {
-  display: none;
-  position: absolute;
-  z-index: 10;
-  top: 100%;
-  right: 0;
-  min-width: 24rem;
-  padding: 1.6rem;
-} */
-
-/* .task_header_ul:hover,
-.task_content_button-more:hover ~ .task_header_ul {
-  display: block;
-  text-align: right;
-  border-radius: 0.8rem;
-  border: 0.2rem solid red;
-  background-color: aqua;
-} */
-
-/* .task_header_li {
-  margin: 1.6rem 0;
-} */
-
-/* .task_header_li_button {
-  width: 100%;
-  border: none;
-  cursor: pointer;
-  outline: inherit;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: #fff;
-  gap: 0.8rem;
-} */
 
 /* Footer */
 
@@ -520,3 +522,9 @@ footer p {
 }
 
 /* background: linear-gradient(180deg, #8B1FF8 0%, #041832 48.44%, #01080E 100%); */
+
+/* dropdown-container */
+/* app_button-more */
+
+/* app__section-task-header__ul */
+/* app__section-task-header__li__button */
