@@ -14,6 +14,7 @@ const btnDeletar = document.querySelector("#btn_deletar"); // botao deletar
 const taskList = JSON.parse(localStorage.getItem("tarefas")) || []; // Array de tarefas
 
 let taskSelecionada = null;
+let liTaskSelecionado = null;
 
 // Atualizar tarefas
 function atualizarTask() {
@@ -52,10 +53,12 @@ function criarElementoLi(task) {
     if (taskSelecionada == task) {
       paragrafoDescricaoTask.textContent = "";
       taskSelecionada = null;
+      liTaskSelecionado = null;
       return;
     }
 
     taskSelecionada = task;
+    liTaskSelecionado = li 
 
     li.classList.add("task_list_li_active");
 
@@ -106,3 +109,14 @@ btnDeletar.onclick = () => {
   textareaTask.value = "";
   formAddTask.classList.add("invisible");
 };
+
+document.addEventListener('eventoTempoFinalizado', () => {
+  if(taskSelecionada && liTaskSelecionado){
+    liTaskSelecionado.classList.remove('task_list_li_active');
+    liTaskSelecionado.classList.add('task_list_li_complete');
+    liTaskSelecionado.querySelector('button').setAttribute('disable', 'disable');
+    paragrafoDescricaoTask.textContent = '';
+    taskSelecionada.complete = true;
+    atualizarTask();
+  }
+});

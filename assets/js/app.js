@@ -10,7 +10,7 @@ const titulo = document.querySelector(".apresentacao_titulo_texto");
 // Relogio de cada pagina
 const temporizador = document.querySelector(".controle_conteudo_timer");
 
-let tempoSegundos = 1500;
+let tempoSegundos = 10;
 let intervalo = null;
 // Imagem referente a cada pagina
 const imagem = document.querySelector(".apresentacao_imagem_imagem");
@@ -52,7 +52,7 @@ function alterarConteudo(valorInterface) {
     case "foco":
       titulo.innerHTML = `Maximize sua produtividade, <strong class='apresentacao_titulo_destaque'>concentre-se no essencial.</strong>`;
       // temporizador.textContent = `25:00`;
-      tempoSegundos = 1500;
+      tempoSegundos = tempoSegundos;
       break;
     case "descanso-curto":
       titulo.innerHTML = `Que tal respirar um pouco? <strong class='apresentacao_titulo_destaque'>Faça uma breve pausa.</strong>`;
@@ -73,16 +73,16 @@ function alterarConteudo(valorInterface) {
 
 const tempoContagem = () => {
   if (tempoSegundos <= 0) {
-    const htmlContextoFoco = html.getAnimations('data-contexto') == 'foco';
+    zerar();
+    musicaTimeFinished.play();
+    reiniciarCronometro();
 
+    const htmlContextoFoco = html.getAttribute("data-interface") == "foco";
     if(htmlContextoFoco){
       const evento = new CustomEvent('eventoTempoFinalizado');
       document.dispatchEvent(evento);
     }
 
-    zerar();
-    musicaTimeFinished.play();
-    reiniciarCronometro();
     return;
   }
   tempoSegundos -= 1;
