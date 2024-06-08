@@ -78,8 +78,8 @@ const tempoContagem = () => {
     reiniciarCronometro();
 
     const htmlContextoFoco = html.getAttribute("data-interface") == "foco";
-    if(htmlContextoFoco){
-      const evento = new CustomEvent('eventoTempoFinalizado');
+    if (htmlContextoFoco) {
+      const evento = new CustomEvent("eventoTempoFinalizado");
       document.dispatchEvent(evento);
     }
 

@@ -287,7 +287,8 @@ h2.tasks_content_heading {
 }
 
 .task_list_li_complete.task_list_li {
-  background: #e41d1d80;
+  background: #00f4bf66;
+  border: solid 2px #00f4bf66;
 }
 
 .task_list_li_paragrafo {
