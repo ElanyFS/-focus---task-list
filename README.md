@@ -9,6 +9,7 @@ Fokus - Task List é uma aplicação web desenvolvida para ajudar você a gerenc
 ## 🎯 Objetivo
 
 ° Adicionar, editar e remover tarefas conforme sua necessidade.
+
 ° Temporizador para períodos de foco, descanso curto e descanso longo.
 
 ## 🛠️ Tecnologias Utilizadas
