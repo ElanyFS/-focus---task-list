@@ -74,24 +74,22 @@ main {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  padding: 1%;
+  /* padding: 1%; */
   gap: 0.6rem;
   flex-wrap: wrap;
+  margin-bottom: 4rem;
 }
 
 .apresentacao {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: auto;
-  /* gap: 2rem; */
-  margin: 0 auto;
-  padding: 0 14rem;
+  width: 100%;
+  padding: 0 8rem;
 }
 
 .apresentacao_titulo {
-  padding: 2%;
-  width: 50%;
+  flex: 1;
 }
 
 .apresentacao_titulo_texto {
@@ -108,7 +106,8 @@ main {
 }
 
 .apresentacao_imagem {
-  width: 45%;
+  flex: 1;
+  text-align: center;
 }
 
 .controle_conteudo {
@@ -389,21 +388,31 @@ footer {
   font-style: normal;
   border-top: #d2d1da solid 1px;
   color: white;
-  position: relative;
   text-align: center;
   padding: 1%;
+  bottom: 0;
+  background-color: #010910; 
 }
 
 footer p {
   margin: 0;
+  padding: 0.1rem;
 }
 
 /* Media query */
 
-@media (max-width: 480px) {
+@media (width <= 428px) {
   main {
-    padding: 2%;
     gap: 0.6rem;
+  }
+
+  .apresentacao {
+    padding: 0 2rem;
+  }
+
+  .apresentacao_titulo_texto,
+  .apresentacao_titulo_destaque {
+    font-size: 3rem !important;
   }
 
   .controle {
@@ -411,6 +420,14 @@ footer p {
     align-items: center;
     justify-content: center;
     padding: 2%;
+  }
+
+  .tak_container {
+    padding: 0 2rem;
+  }
+
+  footer {
+    padding: 4%;
   }
 }
 
@@ -445,20 +462,11 @@ footer p {
 }
 
 /* Tablets */
-@media (max-width: 768px) {
+@media (width <= 884px) {
   .apresentacao {
-    gap: 0.5rem;
-    margin: 0 auto;
-  }
-
-  .apresentacao_titulo_texto {
-    font-size: 1rem;
-    color: white;
-    font-weight: 100;
-  }
-
-  .apresentacao_imagem {
-    width: 90%;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 2rem;
   }
 }
 
@@ -521,11 +529,3 @@ footer p {
     font-size: 1.6rem;
   }
 }
-
-/* background: linear-gradient(180deg, #8B1FF8 0%, #041832 48.44%, #01080E 100%); */
-
-/* dropdown-container */
-/* app_button-more */
-
-/* app__section-task-header__ul */
-/* app__section-task-header__li__button */
